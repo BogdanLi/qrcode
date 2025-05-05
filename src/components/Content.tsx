@@ -34,23 +34,27 @@ export default function Content() {
           placeholder="Paste URL to generate QR Code"
         />
 
-        <div>
-          Size
-          <Slider
-            value={[size]}
-            min={128}
-            max={300}
-            onValueChange={(value) => {
-              setSize(value[0]);
-            }}
-            className="mt-4"
-          />
-        </div>
+        {url && (
+          <>
+            <div>
+              Size
+              <Slider
+                value={[size]}
+                min={128}
+                max={300}
+                onValueChange={(value) => {
+                  setSize(value[0]);
+                }}
+                className="mt-4"
+              />
+            </div>
 
-        <div className="grid grid-cols-2 w-full gap-4">
-          <Button onClick={download}>Download as SVG</Button>
-          <Button onClick={download}>Download as PNG</Button>
-        </div>
+            <div className="grid grid-cols-2 w-full gap-4">
+              <Button onClick={download}>Download as SVG</Button>
+              <Button onClick={download}>Download as PNG</Button>
+            </div>
+          </>
+        )}
       </Card>
       <Card className="px-6 text-center">
         <div
