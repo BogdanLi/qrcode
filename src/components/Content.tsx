@@ -24,8 +24,8 @@ export default function Content() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <Card className="px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <Card className="px-4 col-span-2">
         <h1 className="text-xl">Paste URL</h1>
         <Input
           value={url}
@@ -35,19 +35,22 @@ export default function Content() {
         />
 
         <div>
+          Size
           <Slider
             value={[size]}
             min={128}
-            max={324}
+            max={300}
             onValueChange={(value) => {
               setSize(value[0]);
             }}
+            className="mt-4"
           />
         </div>
 
-        <Button variant="secondary" onClick={download}>
-          Download
-        </Button>
+        <div className="grid grid-cols-2 w-full gap-4">
+          <Button onClick={download}>Download as SVG</Button>
+          <Button onClick={download}>Download as PNG</Button>
+        </div>
       </Card>
       <Card className="px-6 text-center">
         <div
